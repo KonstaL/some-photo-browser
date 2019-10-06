@@ -1,3 +1,5 @@
 <p (click)="startRequest()">home works!</p>
-<div> {{stuff | json}}</div>
-<p *ngIf="isLoading$ | async"> I'm loading!! </p>
+<ul>
+  <img *ngFor="let photo of photos$ | async" [src]="photo.url" />
+</ul>
+<p *ngIf="isLoading$ | async">I'm loading!!</p>
