@@ -1,8 +1,14 @@
-<mat-slide-toggle>
-  Slide me!
-</mat-slide-toggle>
-<p routerLink="['/photos', photo.id]">Some text</p>
+<ul class="images-container">
+  <div *ngFor="let photo of photos$ | async; trackBy: trackByFn" [routerLink]="['/photos', photo.id]" class="img-container">
+    <div class="img-overlay">
+      <p>{{ photo.title }}</p>
+    </div>
 
-<ul class="img-container">
-  <img *ngFor="let photo of photos$ | async" [src]="photo.url" [routerLink]="['/photos', photo.id]" />
+    <!-- According to spec, this should be using thumbnailUrl.  -->
+    <!-- However I preferred the look of this more, so I went for it. -->
+    <img [src]="photo.url" />
+  </div>
 </ul>
+<div class="bottom" #bottom>
+  <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+</div>

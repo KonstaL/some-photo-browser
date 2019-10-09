@@ -1,2 +1,9 @@
-header {
+mat-toolbar {
+  justify-content: space-between;
+
+  .right-side-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Photo } from 'app/modules/shared/models/photo';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -10,6 +10,7 @@ import { AppState, selectPhotoById } from 'app/modules/shared/store';
   selector: 'app-photo-detail',
   templateUrl: './photo-detail.component.html',
   styleUrls: ['./photo-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotoDetailComponent implements OnInit {
   photo$: Observable<Photo>;
