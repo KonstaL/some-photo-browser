@@ -3,6 +3,7 @@ import { environment } from '../../../../environments/environment';
 
 import * as fromApi from './reducers/api.reducer';
 import * as fromPhoto from './reducers/photo.reducer';
+import { PhotoId } from '../models/photo';
 
 export interface AppState {
   readonly api: fromApi.State;
@@ -24,4 +25,11 @@ export const selectIsLoading = createSelector(
   state => state.isLoading
 );
 
-export const { selectAll: selectPhotos, selectIds: selectPhotoIds } = fromPhoto.adapter.getSelectors(selectPhotoState);
+export const { selectEntities: selectPhotoEntities, selectAll: selectPhotos, selectIds: selectPhotoIds } = fromPhoto.adapter.getSelectors(
+  selectPhotoState
+);
+export const selectPhotoById = (id: PhotoId | string) =>
+  createSelector(
+    selectPhotoEntities,
+    entities => entities[id]
+  );

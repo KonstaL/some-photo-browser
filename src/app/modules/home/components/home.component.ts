@@ -17,12 +17,13 @@ export class HomeComponent implements OnInit {
   isLoading$: Observable<boolean>;
 
   constructor(private apiService: ApiService, private store: Store<AppState>) {
-    this.photos$ = this.store.select(selectPhotos);
-    this.isLoading$ = this.store.select(selectIsLoading);
     this.startRequest();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.photos$ = this.store.select(selectPhotos);
+    this.isLoading$ = this.store.select(selectIsLoading);
+  }
 
   startRequest() {
     this.store.dispatch(loadInitial());
