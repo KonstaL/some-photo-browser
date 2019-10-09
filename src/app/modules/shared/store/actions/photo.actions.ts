@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Photo } from '../../models/photo';
+import { Photo, PhotoId } from '../../models/photo';
 
 enum actionTypes {
   loadInitial = '[Photo] load initial photos',
@@ -9,6 +9,10 @@ enum actionTypes {
   loadPage = '[Photo] load page of photos',
   loadPageSuccess = '[Photo] load page success',
   loadPageFailure = '[Photo] load page failure',
+
+  loadSingle = '[Photo] load single',
+  loadSingleFailure = '[Photo] load single failure',
+  loadSingleSuccess = '[Photo] load single success',
 }
 
 export const loadInitial = createAction(actionTypes.loadInitial);
@@ -18,3 +22,7 @@ export const loadInitialFailure = createAction(actionTypes.loadInitialFailure); 
 export const loadNext = createAction(actionTypes.loadPage, props<{ pageNum: number }>());
 export const loadNextSuccess = createAction(actionTypes.loadPageSuccess, props<{ response: Photo[] }>());
 export const loadNextFailure = createAction(actionTypes.loadPageFailure); // TODO: Add proper failure handling
+
+export const loadSingle = createAction(actionTypes.loadSingle, props<{ photoId: PhotoId | string }>());
+export const loadSingleSuccess = createAction(actionTypes.loadSingleSuccess, props<{ response: Photo }>());
+export const loadSingleFailure = createAction(actionTypes.loadSingleFailure); // TODO: Add proper failure handling

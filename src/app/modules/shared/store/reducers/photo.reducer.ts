@@ -19,7 +19,8 @@ export const initialState: State = adapter.getInitialState({
 const apiReducer = createReducer(
   initialState,
   on(photoActions.loadInitialSuccess, (state, { response }) => ({ ...adapter.addAll(response, state), currentPage: 0 })),
-  on(photoActions.loadNextSuccess, (state, { response }) => ({ ...adapter.addMany(response, state), currentPage: state.currentPage++ }))
+  on(photoActions.loadNextSuccess, (state, { response }) => ({ ...adapter.addMany(response, state), currentPage: state.currentPage++ })),
+  on(photoActions.loadSingleSuccess, (state, { response }) => adapter.addOne(response, state))
 );
 
 export function reducer(state: State | undefined, action: Action) {

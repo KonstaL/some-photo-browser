@@ -1,8 +1,11 @@
-<mat-slide-toggle>
-  Slide me!
-</mat-slide-toggle>
 <p routerLink="['/photos', photo.id]">Some text</p>
 
-<ul class="img-container">
-  <img *ngFor="let photo of photos$ | async" [src]="photo.url" [routerLink]="['/photos', photo.id]" />
+<ul class="images-container">
+  <div *ngFor="let photo of photos$ | async" [routerLink]="['/photos', photo.id]" class="img-container">
+    <div class="img-overlay">
+      <p>{{ photo.title }}</p>
+    </div>
+
+    <img [src]="photo.url" />
+  </div>
 </ul>

@@ -1,5 +1,9 @@
 <header>
-  <mat-toolbar>
+  <mat-toolbar color="primary">
     <span routerLink="/">Some Photo Browser</span>
+    <span class="right-side-container">
+      <mat-slide-toggle (change)="setTheme($event)">!</mat-slide-toggle>
+      <mat-spinner *ngIf="isLoading$ | async" [diameter]="40"></mat-spinner>
+    </span>
   </mat-toolbar>
 </header>
