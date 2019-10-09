@@ -11,7 +11,8 @@ import { PhotoEffects } from './modules/shared/store/effects/photo.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './modules/home/home.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment'; // Angular CLI environment
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker'; // Angular CLI environment
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
           maxAge: 40,
         })
       : [],
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
