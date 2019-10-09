@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { PhotoEffects } from './modules/shared/store/effects/photo.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './modules/home/home.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'; // Angular CLI environment
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,11 @@ import { HomeModule } from './modules/home/home.module';
     }),
     EffectsModule.forRoot([PhotoEffects]),
     BrowserAnimationsModule,
+    !environment.production
+      ? StoreDevtoolsModule.instrument({
+          maxAge: 40,
+        })
+      : [],
   ],
   providers: [],
   bootstrap: [AppComponent],

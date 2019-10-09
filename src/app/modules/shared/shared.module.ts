@@ -22,7 +22,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatSnackBarModule,
   ],
-  exports: [PageNotFoundComponent, MatSlideToggleModule, HeaderComponent],
+  exports: [PageNotFoundComponent, MatSlideToggleModule, HeaderComponent, MatProgressSpinnerModule],
   providers: [ApiService, ThemeService],
 })
 export class SharedModule {}

@@ -14,6 +14,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 })
 export class HeaderComponent implements OnInit {
   isLoading$: Observable<boolean>;
+
   constructor(private store: Store<AppState>, private themeService: ThemeService, private snackbar: MatSnackBar) {}
 
   ngOnInit() {
