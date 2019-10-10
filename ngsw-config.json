@@ -19,6 +19,15 @@
         "maxSize": 50,
         "strategy": "performance"
       }
+    },
+    {
+      "name": "api-datagroup",
+      "urls": ["https://jsonplaceholder.typicode.com/*"],
+      "cacheConfig": {
+        "maxAge": "6h",
+        "maxSize": 50,
+        "strategy": "freshness"
+      }
     }
   ]
 }

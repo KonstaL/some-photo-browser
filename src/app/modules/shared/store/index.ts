@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 import * as fromApi from './reducers/api.reducer';
 import * as fromPhoto from './reducers/photo.reducer';
 import { PhotoId } from '../models/photo';
+import { AlbumId } from '../models/album';
 
 export interface AppState {
   readonly api: fromApi.State;
@@ -32,4 +33,10 @@ export const selectPhotoById = (id: PhotoId | string) =>
   createSelector(
     selectPhotoEntities,
     entities => entities[id]
+  );
+
+export const selectPhotosByAlbumId = (id: AlbumId | string) =>
+  createSelector(
+    selectPhotos,
+    photos => photos.filter(photo => photo.albumId === id)
   );

@@ -16,7 +16,7 @@ export class ImageDetailResolverService implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const id = route.paramMap.get('id');
-    console.log('starting to resolve..');
+    console.log('starting to resolve photo..');
 
     return this.store.select(selectPhotoById(id)).pipe(
       take(1),

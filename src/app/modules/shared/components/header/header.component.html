@@ -2,7 +2,7 @@
   <mat-toolbar color="primary">
     <span routerLink="/">Some Photo Browser</span>
     <span class="right-side-container">
-      <mat-spinner *ngIf="isLoading$ | async" [diameter]="40"></mat-spinner>
+      <mat-spinner *ngIf="isLoading$ | async" [diameter]="40" [color]="'accent'"></mat-spinner>
       <mat-slide-toggle (change)="setTheme($event)">!</mat-slide-toggle>
     </span>
   </mat-toolbar>

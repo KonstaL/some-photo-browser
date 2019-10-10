@@ -6,6 +6,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { setIsLoading } from '../store/actions/api.actions';
 import { Photo, PhotoId } from '../models/photo';
 import { tap, catchError } from 'rxjs/operators';
+import { Album, AlbumId } from '../models/album';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +24,16 @@ export class ApiService {
     return this.setLoaderWrapper(this.http.get<Photo[]>(`${this.apiAddress}/photos${this.apiSuffix}${page}`));
   }
 
+  getPhotosByAlbum(id: AlbumId) {
+    return this.setLoaderWrapper(this.http.get<Photo[]>(`${this.apiAddress}/photos?albumId=${id}`));
+  }
+
   getSinglePhoto(id: PhotoId) {
     return this.setLoaderWrapper(this.http.get<Photo>(`${this.apiAddress}/photos/${id}`));
+  }
+
+  getSingleAlbum(id: AlbumId) {
+    return this.setLoaderWrapper(this.http.get<Album>(`${this.apiAddress}/albums/${id}`));
   }
 
   toPromise<T>(obs: Observable<T>): Promise<T> {

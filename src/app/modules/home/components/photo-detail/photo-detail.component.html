@@ -1,7 +1,7 @@
 <div *ngIf="photo$ | async; let photo" class="container">
   <div class="image-details">
     <h1>{{ photo.title }}</h1>
-    <p>From album: {{ photo.albumId }}</p>
+    <p [routerLink]="['/albums', photo.albumId]">From the album: {{ photo.albumId }}</p>
   </div>
   <div class="image-container">
     <img [src]="photo.url" />
