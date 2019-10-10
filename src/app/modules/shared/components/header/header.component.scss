@@ -5,5 +5,9 @@ mat-toolbar {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    mat-spinner {
+      margin-right: 20px;
+    }
   }
 }
